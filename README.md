@@ -1,5 +1,14 @@
 # mframe (mframe)
 
+Versions:
+- Node 18.20.1 Current-LTS
+- NPM 10.5.0
+- Yarn 1.22.22
+- Windows 10.0.6.1000
+- quasar cli 2.4.1
+- Pkg quasar v2.17.4
+- Pkg @quasar-app-vite 1.11.0
+
 A Quasar Project
 
 ## Install the dependencies
