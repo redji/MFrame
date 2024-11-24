@@ -9,12 +9,20 @@
     <p>Count: {{ todoCount }} / {{ meta.totalCount }}</p>
     <p>Active: {{ active ? 'yes' : 'no' }}</p>
     <p>Clicks on todos: {{ clickCount }}</p>
+    <Button
+    label="Search"
+    icon="pi pi-search"
+    pt:root="bg-teal-500 hover:bg-teal-700 active:bg-teal-900 cursor-pointer py-2 px-4 rounded-full border-0 flex gap-2"
+    pt:label="text-white font-bold text-lg"
+    pt:icon="text-white text-xl"
+/>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { Todo, Meta } from './models'
+import Button from 'primevue/button'
 
 interface Props {
   title: string;
