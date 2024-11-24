@@ -1,5 +1,5 @@
 <template>
-  <div class="button-component'">
+  <div class="paginator-component'">
 
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <div class="button-component'">
+  <div class="text-area-component'">
 
   </div>
 </template>

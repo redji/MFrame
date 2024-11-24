@@ -1,5 +1,5 @@
 <template>
-  <div class="button-component'">
+  <div class="order-list-component'">
 
   </div>
 </template>
