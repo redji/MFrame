@@ -38,6 +38,7 @@
           </TabPanel>
           <TabPanel value="7">
             <div class="text-3xl font-bold mb-4">Chart</div>
+            <ChartComponent />
           </TabPanel>
           <TabPanel value="8">
             <div class="text-3xl font-bold mb-4">Messages</div>
@@ -58,6 +59,7 @@ import TabList from 'primevue/tablist'
 import Tab from 'primevue/tab'
 import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
+import ChartComponent from 'src/examples/chart/ChartComponent.vue'
 
 defineOptions({
   name: 'CategoriesComponent'

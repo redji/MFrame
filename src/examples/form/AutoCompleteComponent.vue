@@ -1,6 +1,5 @@
 <template>
-  <div class="chart-component'">
-
+  <div class="auto-complete-component'">
   </div>
 </template>
 
