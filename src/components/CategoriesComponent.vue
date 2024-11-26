@@ -17,6 +17,7 @@
       <TabPanels>
           <TabPanel value="0">
             <div class="text-3xl font-bold mb-4">Form</div>
+            <FormComponent />
           </TabPanel>
           <TabPanel value="1">
             <div class="text-3xl font-bold mb-4">Button</div>
@@ -62,6 +63,7 @@ import TabPanels from 'primevue/tabpanels'
 import TabPanel from 'primevue/tabpanel'
 import ChartComponent from 'src/examples/chart/ChartComponent.vue'
 import ButtonComponent from 'src/examples/button/ButtonComponent.vue'
+import FormComponent from 'src/examples/form/Form.vue'
 
 defineOptions({
   name: 'CategoriesComponent'
