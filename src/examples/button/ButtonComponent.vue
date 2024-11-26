@@ -38,10 +38,14 @@
       <button
         @click="toggleDropdown"
         class="bg-blue-600 text-white font-semibold border border-blue-700 shadow-md hover:bg-blue-700 transition duration-200 py-2 px-4 flex items-center"
+        :class="{ 'opacity-50 cursor-not-allowed': disabled }"
         aria-haspopup="true"
         :aria-expanded="dropdownOpen"
+        :disabled="disabled"
       >
-        <span>Dropdown button ▼</span> <!-- Dropdown arrow -->
+        <i v-if="loading" class="pi pi-spinner animate-spin mr-2"></i>
+        <span class="mr-2">{{ selectedValue || 'Select Action' }}</span>
+        <span>▼</span>
       </button>
 
       <!-- Dropdown Menu (hidden by default) -->
@@ -51,6 +55,14 @@
             <button
               @click="handleSecondaryAction(item)"
               class="px-4 py-2 text-gray-800 hover:bg-gray-100 w-full text-left flex items-center"
+              :class="{
+                'opacity-50 cursor-not-allowed': item.disabled,
+                'text-green-600': item.severity === 'success',
+                'text-red-600': item.severity === 'danger',
+                'text-blue-600': item.severity === 'info',
+                'text-yellow-600': item.severity === 'warning'
+              }"
+              :disabled="item.disabled"
             >
               <i :class="item.icon + ' mr-2'"></i>
               {{ item.label }}
@@ -79,53 +91,75 @@ const log = (name: string) => {
 }
 
 const dropdownOpen = ref(false)
+const selectedValue = ref('')
+const loading = ref(false)
+const disabled = ref(false)
 
 interface Item {
   label: string
   icon: string
   url?: string
   command?: () => void
+  disabled?: boolean
+  severity?: 'success' | 'info' | 'warning' | 'danger'
 }
 
 const items = ref([
   {
-    label: 'Add',
+    label: 'New',
     icon: 'pi pi-plus',
-    command: () => { console.log('Add action triggered') }
+    command: () => { console.log('New item action triggered') },
+    severity: 'success'
   },
   {
-    label: 'Update',
-    icon: 'pi pi-refresh',
-    command: () => { console.log('Update action triggered') }
+    label: 'Edit',
+    icon: 'pi pi-pencil',
+    command: () => { console.log('Edit action triggered') }
   },
   {
     label: 'Delete',
     icon: 'pi pi-trash',
-    command: () => { console.log('Delete action triggered') }
+    command: () => { console.log('Delete action triggered') },
+    severity: 'danger'
   },
   {
-    label: 'Upload',
-    icon: 'pi pi-upload',
-    command: () => { console.log('Upload action triggered') }
+    label: 'Export',
+    icon: 'pi pi-download',
+    command: () => { console.log('Export action triggered') }
   },
   {
-    label: 'External Link',
-    icon: 'pi pi-external-link',
-    url: 'https://www.primevue.org'
+    label: 'Share',
+    icon: 'pi pi-share-alt',
+    command: () => { console.log('Share action triggered') },
+    disabled: true
+  },
+  {
+    label: 'Documentation',
+    icon: 'pi pi-book',
+    url: 'https://www.primevue.org/button'
   }
 ] as Array<Item>)
 
 const toggleDropdown = () => {
-  dropdownOpen.value = !dropdownOpen.value
+  if (!disabled.value) {
+    dropdownOpen.value = !dropdownOpen.value
+  }
 }
 
 const handleSecondaryAction = (item: Item) => {
+  if (item.disabled) return
+
+  loading.value = true
+  selectedValue.value = item.label
+
   if (item.command) {
-    item.command() // Call the command if it exists
+    item.command()
   } else if (item.url) {
-    window.open(item.url, '_blank') // Open external link in a new tab
+    window.open(item.url, '_blank')
   }
-  dropdownOpen.value = false // Close the dropdown after selection
+
+  loading.value = false
+  dropdownOpen.value = false
 }
 </script>
 <style scoped lang="scss">
