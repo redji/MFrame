@@ -178,6 +178,7 @@ const searchTemplateItems = (event: AutoCompleteCompleteEvent) => {
 /* AutoComplete base styles */
 .p-autocomplete {
   width: 100%;
+  position: relative;
 }
 
 /* Panel styles */
@@ -188,6 +189,35 @@ const searchTemplateItems = (event: AutoCompleteCompleteEvent) => {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   margin-top: 0.25rem;
+  position: fixed;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Ensure panel stays above other content */
+.p-autocomplete {
+  width: 100%;
+  position: relative;
+}
+
+.p-autocomplete-items {
+  padding: 0;
+  background: white;
+  border-radius: 0.5rem;
+  max-height: inherit;
+  overflow-y: auto;
+}
+
+/* Adjust panel position when near bottom */
+.p-autocomplete-panel[data-pc-section="panel"] {
+  transform-origin: center top;
+  min-width: 100%;
+  width: max-content;
+}
+
+.p-autocomplete-panel[data-pc-state="overlay"] {
+  position: absolute;
+  z-index: 1000;
 }
 
 /* Items container */
