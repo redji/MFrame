@@ -3,6 +3,7 @@
 
 module.exports = {
   plugins: [
+    require('postcss-import')(),
     require('tailwindcss')(),
     // https://github.com/postcss/autoprefixer
     require('autoprefixer')({

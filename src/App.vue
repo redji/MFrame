@@ -5,7 +5,6 @@
 <script setup lang="ts">
 import { onMounted, getCurrentInstance } from 'vue'
 import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/aura'
 import 'primeicons/primeicons.css'
 
 defineOptions({
@@ -17,10 +16,10 @@ onMounted(() => {
   if (app) {
     app.use(PrimeVue, {
       theme: {
-        preset: Aura,
+        preset: 'none',
         options: {
           prefix: 'p',
-          dakModeSelector: 'system',
+          darkModeSelector: 'system',
           cssLayer: {
             name: 'primevue',
             order: 'tailwind-base, primevue, tailwind-utilities'

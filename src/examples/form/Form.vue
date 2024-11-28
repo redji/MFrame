@@ -40,7 +40,7 @@
             <AutoComplete />
           </TabPanel>
           <TabPanel value="2">
-            <div class="text-3xl font-bold mb-4">CascadeSelect</div>
+            <div class="text-3xl font-bold mb-4">Cascade Select</div>
             <CascadeSelect />
           </TabPanel>
           <TabPanel value="3">
