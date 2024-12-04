@@ -15,7 +15,7 @@
           <Tab value="10" class="mr-2">InputGroup</Tab>
           <Tab value="11" class="mr-2">InputMask</Tab>
           <Tab value="12" class="mr-2">InputNumber</Tab>
-          <Tab value="13" class="mr-2">InputOpt</Tab>
+          <Tab value="13" class="mr-2">InputOtp</Tab>
           <Tab value="14" class="mr-2">InputText</Tab>
           <Tab value="15" class="mr-2">KeyFilter</Tab>
           <Tab value="16" class="mr-2">Knob</Tab>
@@ -84,8 +84,8 @@
             <InputNumber />
           </TabPanel>
           <TabPanel value="13">
-            <div class="text-3xl font-bold mb-4">InputOpt</div>
-            <InputOpt />
+            <div class="text-3xl font-bold mb-4">InputOtp</div>
+            <InputOtp />
           </TabPanel>
           <TabPanel value="14">
             <div class="text-3xl font-bold mb-4">InputText</div>
@@ -163,13 +163,13 @@ import FloatLabel from './FloatLabelComponent.vue'
 import IconField from './IconFieldComponent.vue'
 import Ifta from './IftaLabelComponent.vue'
 import InputGroup from './InputGroupComponent.vue'
+import ListBox from './ListBoxComponent.vue'
 import InputMask from './InputMaskComponent.vue'
 import InputNumber from './InputNumberComponent.vue'
-import InputOpt from './InputOptComponent.vue'
+import InputOtp from './InputOtpComponent.vue'
 import InputText from './InputTextComponent.vue'
 import KeyFilter from './KeyFilterComponent.vue'
 import Knob from './KnobComponent.vue'
-import ListBox from './ListBoxComponent.vue'
 import MultiSelect from './MultiSelectComponent.vue'
 import Password from './PasswordComponent.vue'
 import RadioButton from './RadioButtonComponent.vue'
