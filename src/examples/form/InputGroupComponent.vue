@@ -217,112 +217,82 @@ const gender: Ref<string> = ref('')
 
 <style>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Input Group Styles */
 .p-inputgroup {
   display: flex;
   align-items: stretch;
-}
-
-.p-inputgroup > .p-component {
-  flex: 1 1 auto;
+  width: 100%;
 }
 
 .p-inputgroup-addon {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0.5rem 0.75rem;
-  background: #f3f4f6;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  border: 1px solid var(--surface-300);
+  border-radius: 0.375rem;
 }
 
 .p-inputgroup > .p-inputgroup-addon:first-child {
   border-right: 0;
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .p-inputgroup > .p-inputgroup-addon:last-child {
   border-left: 0;
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.p-inputgroup > .p-inputtext,
-.p-inputgroup > .p-inputnumber > .p-inputtext {
-  border-radius: 0;
+.p-inputgroup > .p-inputtext:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.p-inputgroup > .p-button {
-  border-radius: 0;
+.p-inputgroup > .p-inputtext:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.p-inputgroup .p-button {
+  margin: 0;
 }
 
 .p-inputgroup > .p-button:first-child {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .p-inputgroup > .p-button:last-child {
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.p-inputgroup > .p-dropdown {
-  border-radius: 0;
+.p-inputtext {
+  @apply bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  width: 100%;
 }
 
-.p-inputgroup > .p-dropdown:first-child .p-dropdown-label {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
+.p-inputtext:enabled:hover {
+  border-color: var(--primary-color);
 }
 
-/* Checkbox and Radio in Input Group */
-.p-inputgroup-addon .p-checkbox,
-.p-inputgroup-addon .p-radiobutton {
-  margin-right: 0;
+.p-inputtext:enabled:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-200);
 }
 
-/* Focus States */
-.p-inputgroup > .p-inputtext:focus,
-.p-inputgroup > .p-inputnumber > .p-inputtext:focus {
-  z-index: 1;
-  position: relative;
-}
-
-/* Hover States */
-.p-inputgroup-addon:hover {
-  background: #e5e7eb;
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 640px) {
-  .p-inputgroup {
-    flex-wrap: wrap;
-  }
-
-  .p-inputgroup > .p-dropdown,
-  .p-inputgroup > .p-button {
-    width: 100%;
-  }
-
-  .p-inputgroup > *:not(:first-child) {
-    border-radius: 0;
-    margin-top: -1px;
-  }
-
-  .p-inputgroup > *:first-child {
-    border-radius: 0.375rem 0.375rem 0 0;
-  }
-
-  .p-inputgroup > *:last-child {
-    border-radius: 0 0 0.375rem 0.375rem;
-  }
+.p-button {
+  @apply bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700;
 }
 </style>

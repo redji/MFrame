@@ -188,7 +188,7 @@ const handleKeydown = (event: KeyboardEvent, index: number, type: keyof OtpValue
 
 <style scoped>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

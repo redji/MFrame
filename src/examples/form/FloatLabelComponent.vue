@@ -231,7 +231,7 @@ const maskProps = {
 
 <style>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -240,22 +240,10 @@ const maskProps = {
 /* Float Label Styles */
 .p-float-label {
   position: relative;
-  display: block;
 }
 
 .p-float-label label {
-  position: absolute;
-  pointer-events: none;
-  top: 50%;
-  left: 0.75rem;
-  transform-origin: 0 0;
-  transition: all 0.2s ease;
-  color: #6c757d;
-  transform: translateY(-50%);
-}
-
-.p-float-label textarea ~ label {
-  top: 1rem;
+  @apply text-gray-500 dark:text-gray-400;
 }
 
 .p-float-label input:focus ~ label,
@@ -264,15 +252,89 @@ const maskProps = {
 .p-float-label textarea.p-filled ~ label,
 .p-float-label .p-inputwrapper-focus ~ label,
 .p-float-label .p-inputwrapper-filled ~ label {
-  top: -0.75rem;
-  font-size: 12px;
-  color: var(--primary-color, #3B82F6);
+  @apply text-primary-500 dark:text-primary-400;
 }
 
-.p-float-label .p-placeholder,
-.p-float-label input::placeholder,
-.p-float-label textarea::placeholder {
-  opacity: 0;
+.p-float-label .p-invalid ~ label {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.p-inputtext {
+  @apply bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.p-inputtext:enabled:hover {
+  border-color: var(--primary-color);
+}
+
+.p-inputtext:enabled:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-200);
+}
+
+.p-inputtext.p-invalid {
+  border-color: var(--red-500);
+}
+
+.p-inputtext.p-invalid:enabled:hover {
+  border-color: var(--red-600);
+}
+
+.p-inputtext.p-invalid:enabled:focus {
+  box-shadow: 0 0 0 2px var(--red-200);
+}
+
+.p-inputtext:disabled {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400;
+}
+
+.p-dropdown {
+  @apply bg-white dark:bg-gray-700;
+}
+
+.p-dropdown:not(.p-disabled):hover {
+  border-color: var(--primary-color);
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-200);
+}
+
+.p-dropdown-panel {
+  @apply bg-white dark:bg-gray-800;
+}
+
+.p-dropdown-item {
+  @apply text-gray-700 dark:text-gray-200;
+}
+
+.p-dropdown-item:hover {
+  @apply bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-200;
+}
+
+.p-dropdown-item.p-highlight {
+  @apply bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-200;
+}
+
+.p-error {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.success {
+  @apply bg-green-500 dark:bg-green-600;
+}
+
+.warning {
+  @apply bg-yellow-500 dark:bg-yellow-600;
+}
+
+.danger {
+  @apply bg-red-500 dark:bg-red-600;
 }
 
 /* Component specific adjustments */

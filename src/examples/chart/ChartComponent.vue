@@ -94,12 +94,12 @@ const data = ref({
   datasets: [
     {
       label: 'Sales',
-      backgroundColor: '#42A5F5',
+      backgroundColor: 'var(--primary-500)',
       data: [40, 60, 80, 100, 120, 140]
     },
     {
       label: 'Expenses',
-      backgroundColor: '#FF6384',
+      backgroundColor: 'var(--red-500)',
       data: [30, 50, 70, 90, 110, 130]
     }
   ]
@@ -123,12 +123,12 @@ const chartData = {
   datasets: [
     {
       label: 'Sales',
-      backgroundColor: '#42A5F5',
+      backgroundColor: 'var(--primary-500)',
       data: [40, 60, 80, 100, 120, 140]
     },
     {
       label: 'Expenses',
-      backgroundColor: '#FF6384',
+      backgroundColor: 'var(--red-500)',
       data: [30, 50, 70, 90, 110, 130]
     }
   ]
@@ -138,17 +138,17 @@ const multiChartData = {
   datasets: [
     {
       label: 'New Customers',
-      borderColor: '#47acb1',
-      backgroundColor: 'rgba(71,172,177,0.2)',
+      borderColor: 'var(--cyan-500)',
+      backgroundColor: 'var(--cyan-100)',
       data: [30, 70, 45, 60, 80, 90],
-      yAxisID: 'customersAxis' // Link this dataset to the first axis
+      yAxisID: 'customersAxis'
     },
     {
       label: 'Revenue',
-      borderColor: '#f07113',
-      backgroundColor: 'rgba(240,113,19,0.2)',
+      borderColor: 'var(--orange-500)',
+      backgroundColor: 'var(--orange-100)',
       data: [100000, 142000, 165000, 198000, 164000, 151000],
-      yAxisID: 'revenueAxis' // Link this dataset to the second axis
+      yAxisID: 'revenueAxis'
     }
   ]
 } as ChartData
@@ -159,24 +159,24 @@ const chartDataLineStyle = {
   datasets: [
     {
       label: 'Sales',
-      borderColor: '#42A5F5',
-      backgroundColor: 'rgba(66, 165, 245, 0.2)', // Area fill color
+      borderColor: 'var(--primary-500)',
+      backgroundColor: 'var(--primary-100)',
       data: [30, 70, 45, 60, 80, 90],
-      fill: true, // Fill the area under the line
-      tension: 0.4 // Smooth curve
+      fill: true,
+      tension: 0.4
     },
     {
       label: 'Expenses',
-      borderColor: '#FF6384',
-      backgroundColor: 'rgba(255, 99, 132, 0.2)', // Area fill color
+      borderColor: 'var(--red-500)',
+      backgroundColor: 'var(--red-100)',
       data: [20, 50, 30, 40, 60, 70],
-      fill: true, // Fill the area under the line
-      tension: 0.4 // Smooth curve
+      fill: true,
+      tension: 0.4
     },
     {
       label: 'Profit',
-      borderColor: '#66BB6A',
-      backgroundColor: 'rgba(102, 187, 106, 0.2)', // Area fill color
+      borderColor: 'var(--green-500)',
+      backgroundColor: 'var(--green-100)',
       data: [10, 20, 15, 20, 20, 30],
       fill: true,
       tension: 0.4
@@ -231,10 +231,10 @@ const chartOptionsMultiAxis = {
       title: {
         display: true,
         text: 'New Customers',
-        fontColor: '#47acb1'
+        color: 'var(--cyan-500)'
       },
       ticks: {
-        color: '#47acb1'
+        color: 'var(--cyan-500)'
       }
     },
     revenueAxis: {
@@ -243,10 +243,10 @@ const chartOptionsMultiAxis = {
       title: {
         display: true,
         text: 'Revenue ($)',
-        fontColor: '#f07113'
+        color: 'var(--orange-500)'
       },
       ticks: {
-        color: '#f07113'
+        color: 'var(--orange-500)'
       },
       grid: {
         drawOnChartArea: false // Only want the grid lines for one axis to show up

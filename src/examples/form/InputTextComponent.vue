@@ -167,7 +167,7 @@ const value9: Ref<string> = ref('Disabled')
 
 <style scoped>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -179,31 +179,32 @@ const value9: Ref<string> = ref('Disabled')
 
 .p-inputtext {
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
+  @apply border border-gray-300 dark:border-gray-600;
   border-radius: 0.375rem;
   transition: all 0.2s ease;
+  @apply bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100;
 }
 
 .p-inputtext:enabled:hover {
-  border-color: #2563eb;
+  border-color: var(--primary-color);
 }
 
 .p-inputtext:enabled:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px #bfdbfe;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-200);
 }
 
 .p-inputtext.p-invalid {
-  border-color: #ef4444;
+  border-color: var(--red-500);
 }
 
 .p-inputtext.p-invalid:enabled:hover {
-  border-color: #dc2626;
+  border-color: var(--red-600);
 }
 
 .p-inputtext.p-invalid:enabled:focus {
-  box-shadow: 0 0 0 2px #fecaca;
+  box-shadow: 0 0 0 2px var(--red-200);
 }
 
 .p-input-icon-left,
@@ -217,7 +218,7 @@ const value9: Ref<string> = ref('Disabled')
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #6b7280;
+  @apply text-gray-500 dark:text-gray-400;
 }
 
 .p-input-icon-left > i {

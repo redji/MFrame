@@ -140,7 +140,7 @@ const value10 = ref('Invalid input')
 
 <style>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -159,7 +159,7 @@ const value10 = ref('Invalid input')
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #6c757d;
+  @apply text-gray-500 dark:text-gray-400;
   cursor: pointer;
 }
 
@@ -213,42 +213,41 @@ const value10 = ref('Invalid input')
 
 /* Validation States */
 .p-inputtext.p-inputtext-success {
-  border-color: #10b981;
+  border-color: var(--green-500);
 }
 
 .p-inputtext.p-inputtext-success:enabled:hover {
-  border-color: #059669;
+  border-color: var(--green-600);
 }
 
 .p-inputtext.p-inputtext-success:enabled:focus {
-  box-shadow: 0 0 0 2px #a7f3d0;
+  box-shadow: 0 0 0 2px var(--green-200);
 }
 
 .p-inputtext.p-invalid {
-  border-color: #ef4444;
+  border-color: var(--red-500);
 }
 
 .p-inputtext.p-invalid:enabled:hover {
-  border-color: #dc2626;
+  border-color: var(--red-600);
 }
 
 .p-inputtext.p-invalid:enabled:focus {
-  box-shadow: 0 0 0 2px #fecaca;
+  box-shadow: 0 0 0 2px var(--red-200);
 }
 
 /* Hover States */
 .p-input-icon-left > i:hover,
 .p-input-icon-right > i:hover {
-  color: #343a40;
+  @apply text-gray-700 dark:text-gray-200;
 }
 
 /* Input Base Styles */
 .p-inputtext {
   width: 100%;
   padding: 0.75rem;
-  border: 1px solid #ced4da;
+  @apply border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100;
   border-radius: 6px;
-  transition: all 0.2s ease;
 }
 
 .p-inputtext:enabled:hover {

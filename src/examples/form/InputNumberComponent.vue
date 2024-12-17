@@ -200,7 +200,7 @@ const value12: Ref<number | null> = ref(0)
 
 <style>
 .card {
-  background: white;
+  @apply bg-white dark:bg-gray-800;
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -211,25 +211,39 @@ const value12: Ref<number | null> = ref(0)
 }
 
 .p-inputnumber {
-  width: 100%;
-}
-
-.p-inputtext {
-  width: 100%;
+  @apply bg-white dark:bg-gray-700;
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
   border-radius: 0.375rem;
-  transition: all 0.2s ease;
 }
 
-.p-inputtext:enabled:hover {
-  border-color: #2563eb;
+.p-inputnumber:enabled:hover {
+  border-color: var(--primary-color);
 }
 
-.p-inputtext:enabled:focus {
+.p-inputnumber:enabled:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px #bfdbfe;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-200);
+}
+
+.p-inputnumber.p-inputtext-success {
+  border-color: var(--green-500);
+  background: var(--green-500);
+}
+
+.p-inputnumber.p-inputtext-success:enabled:hover {
+  border-color: var(--green-600);
+  background: var(--green-600);
+}
+
+.p-inputnumber.p-invalid {
+  border-color: var(--red-500);
+  background: var(--red-500);
+}
+
+.p-inputnumber.p-invalid:enabled:hover {
+  border-color: var(--red-600);
+  background: var(--red-600);
 }
 
 .p-inputnumber-buttons-stacked .p-button.p-inputnumber-button-up {
