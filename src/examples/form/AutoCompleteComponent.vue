@@ -8,11 +8,16 @@
           v-model:suggestions="filteredItems"
           @complete="searchItems"
           placeholder="Search programming languages..."
-          :pt="defaultPt"
+          :pt="{
+            ...defaultPt,
+            panel: { class: 'p-0' },
+            list: { class: 'py-0' }
+          }"
           optionLabel="label"
           :field="'label'"
           :delay="0"
           showClear
+          :scrollHeight="`${filteredItems.length > 0 ? Math.min(filteredItems.length * 40, 200) : 40}px`"
         >
           <template #option="{ option }">
             <div class="py-2 px-3 border-b border-gray-100 last:border-0 text-base">
@@ -29,21 +34,27 @@
           v-model:suggestions="filteredTemplateItems"
           @complete="searchTemplateItems"
           placeholder="Search countries..."
-          :pt="defaultPt"
+          :pt="{
+            ...defaultPt,
+            panel: { class: 'p-0' },
+            list: { class: 'py-0' }
+          }"
           optionLabel="label"
           :field="'label'"
           :dropdown="true"
           :delay="0"
           showClear
-          :panelStyle="{ 'max-height': '200px', 'overflow-y': 'auto' }"
+          :scrollHeight="`${filteredTemplateItems.length > 0 ? Math.min(filteredTemplateItems.length * 60, 240) : 60}px`"
           appendTo="body"
         >
           <template #option="{ option }">
-              <i :class="option.icon" />
+            <div class="flex items-center gap-3 p-3 border-b border-gray-100 last:border-0">
+              <i :class="[option.icon, 'text-lg']" />
               <div>
                 <div class="font-medium text-base">{{ option.label }}</div>
                 <small class="text-gray-600 text-xs">{{ option.description }}</small>
               </div>
+            </div>
           </template>
         </AutoComplete>
       </div>
@@ -55,12 +66,17 @@
           v-model:suggestions="filteredItems"
           @complete="searchItems"
           placeholder="Select multiple items..."
-          :pt="defaultPt"
+          :pt="{
+            ...defaultPt,
+            panel: { class: 'p-0' },
+            list: { class: 'py-0' }
+          }"
           optionLabel="label"
           :field="'label'"
           :multiple="true"
           :delay="0"
           showClear
+          :scrollHeight="`${filteredItems.length > 0 ? Math.min(filteredItems.length * 40, 200) : 40}px`"
         >
           <template #option="{ option }">
             <div class="py-2 px-3 border-b border-gray-100 last:border-0 text-base">
