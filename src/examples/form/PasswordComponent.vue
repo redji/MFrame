@@ -46,38 +46,24 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Password from 'primevue/password'
-import Divider from 'primevue/divider'
 
-interface PasswordInfo {
-  message: string
-  styleClass: string
-}
+interface Props {}
 
-interface PasswordSlotProps {
-  strength: string
-  info: PasswordInfo[]
+type Emits = {
+  (e: 'update:modelValue', value: string): void
 }
 
 // Define props and emits
-defineProps<{}>()
-defineEmits<{
-  (e: 'update:modelValue', value: string): void
-}>()
+defineProps<Props>()
+defineEmits<Emits>()
 
 // Password values with proper typing
 const value1 = ref<string>('')
 const value2 = ref<string>('')
 const value3 = ref<string>('')
-const value4 = ref<string>('')
 const value5 = ref<string>('')
 const value6 = ref<string>('')
 const value7 = ref<string>('disabled')
-
-// Handle password change with proper typing
-const onChange = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  console.log('Password changed:', target.value)
-}
 </script>
 
 <style scoped>
