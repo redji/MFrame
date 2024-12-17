@@ -47,24 +47,36 @@
       <div class="card">
         <h3 class="text-sm font-semibold mb-2">Indeterminate Group</h3>
         <div class="flex flex-col gap-2">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800">
             <Checkbox
-              v-model="selectAll"
+              :modelValue="selectAll"
               :indeterminate="isIndeterminate"
-              @change="onSelectAllChange"
+              @change="handleSelectAll"
+              :binary="true"
               inputId="select-all"
+              class="parent-checkbox"
             />
-            <label for="select-all" class="text-sm">All Tasks</label>
+            <label for="select-all" class="text-sm font-medium cursor-pointer select-none">
+              All Tasks
+              <span v-if="selectedTasks.length > 0" class="text-xs text-gray-500 ml-2">
+                ({{ selectedTasks.length }}/{{ tasks.length }})
+              </span>
+            </label>
           </div>
           <div class="ml-6 flex flex-col gap-2">
-            <div v-for="task in tasks" :key="task.id" class="flex items-center gap-2">
+            <div
+              v-for="task in tasks"
+              :key="task.id"
+              class="flex items-center gap-2 p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800"
+            >
               <Checkbox
                 v-model="selectedTasks"
                 :value="task.id"
-                @change="updateSelectAllState"
                 :inputId="`task-${task.id}`"
               />
-              <label :for="`task-${task.id}`" class="text-sm">{{ task.name }}</label>
+              <label :for="`task-${task.id}`" class="text-sm cursor-pointer select-none">
+                {{ task.name }}
+              </label>
             </div>
           </div>
         </div>
@@ -74,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, onMounted } from 'vue'
+import { ref, computed } from 'vue'
 import Checkbox from 'primevue/checkbox'
 
 // Basic checkbox
@@ -122,31 +134,37 @@ const tasks = ref<Task[]>([
 ])
 
 const selectedTasks = ref<number[]>([])
-const selectAll = ref(false)
-const isIndeterminate = ref(false)
 
-const updateSelectAllState = () => {
-  const selectedCount = selectedTasks.value.length
-  selectAll.value = selectedCount === tasks.value.length
-  isIndeterminate.value = selectedCount > 0 && selectedCount < tasks.value.length
-}
-
-// Watch for changes in selectedTasks
-watch(selectedTasks, () => {
-  updateSelectAllState()
-}, { immediate: true })
-
-const onSelectAllChange = () => {
-  if (selectAll.value) {
-    selectedTasks.value = tasks.value.map(task => task.id)
-  } else {
-    selectedTasks.value = []
-  }
-  isIndeterminate.value = false
-}
-
-// Initialize state
-onMounted(() => {
-  updateSelectAllState()
+const selectAll = computed(() => {
+  return selectedTasks.value.length === tasks.value.length
 })
+
+const isIndeterminate = computed(() => {
+  const selectedCount = selectedTasks.value.length
+  return selectedCount > 0 && selectedCount < tasks.value.length
+})
+
+const handleSelectAll = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  selectedTasks.value = target.checked ? tasks.value.map(task => task.id) : []
+}
 </script>
+
+<style scoped>
+.card {
+  @apply bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm;
+}
+
+/* Custom styles for the parent checkbox to make the indeterminate state more visible */
+:deep(.parent-checkbox .p-checkbox-box.p-highlight) {
+  @apply bg-primary-500 border-primary-500;
+}
+
+:deep(.parent-checkbox .p-checkbox-box.p-indeterminate) {
+  @apply bg-primary-400 border-primary-400;
+}
+
+:deep(.parent-checkbox .p-checkbox-box) {
+  @apply transition-colors duration-200;
+}
+</style>
